@@ -1,1 +1,1 @@
-# edc-igti-enzo
+# edc-igti
