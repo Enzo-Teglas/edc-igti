@@ -1,4 +1,4 @@
-name: raw
+name: develop
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   staging_build_and_push:
-    name: raw Build and Push
+    name: develop Build and Push
     runs-on: ubuntu-latest
     container: docker:20-dind
     steps:
@@ -17,9 +17,9 @@ jobs:
           apk add --update py3-pip
           pip3 install awscli
           chmod -R +x ./CI/scripts
-          bash ./CI/scripts/build_and_push.sh raw
+          bash ./CI/scripts/build_and_push.sh develop
   staging_plan:
-    name: raw Plan
+    name: develop Plan
     needs: staging_build_and_push
     runs-on: ubuntu-latest
     container: ronya3data/rony-ci:0.0.1-terraform1.0.3
@@ -28,9 +28,9 @@ jobs:
       - name: terraform plan
         run: |
           chmod -R +x ./CI/scripts
-          ./CI/scripts/plan.sh raw
+          ./CI/scripts/plan.sh develop
   staging_apply:
-    name: raw Apply
+    name: develop Apply
     needs: staging_plan
     runs-on: ubuntu-latest
     container: ronya3data/rony-ci:0.0.1-terraform1.0.3
@@ -39,7 +39,7 @@ jobs:
       - name: terraform apply
         run: |
           chmod -R +x ./CI/scripts
-          ./CI/scripts/apply.sh raw -auto-approve
+          ./CI/scripts/apply.sh develop -auto-approve
 env: 
     "google.cloud.auth.service.account.enable": "true"
     "google.cloud.auth.service.account.email": "@gmail.com"
