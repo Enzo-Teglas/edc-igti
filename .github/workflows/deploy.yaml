@@ -44,14 +44,3 @@
 #     "google.cloud.auth.service.account.enable": "true"
 #     "google.cloud.auth.service.account.email": "@gmail.com"
 
-passos :
-- nome : ubuntu
-  args : ['bash', '-c', "echo '$COMMIT_SHA' > REVISION.txt"]
-- nome : gcr.io/cloud-builders/gsutil
-  argumentos :
-    - ' -m '
-    - ' rsync '
-    - ' -d '
-    - '- r ' _
-    - ' etl/. '
-    - ' gs://${_GCS_BUCKET} '
