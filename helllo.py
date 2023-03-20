@@ -1,6 +1,6 @@
 print("teste")
 from google.cloud import storage
-
+import sys
 
 def create_bucket(bucket_name):
     """Creates a new bucket."""
@@ -11,3 +11,6 @@ def create_bucket(bucket_name):
     bucket = storage_client.create_bucket(bucket_name)
 
     print(f"Bucket {bucket.name} created")
+
+    if __name__ == "__main__":
+        create_bucket(bucket_name=sys.argv[1])
