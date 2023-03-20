@@ -18,6 +18,8 @@ resource  "google_storage_bucket" "my_bucket"{
 }
 
 
+
+
 # resource  "google_storage_bucket" "my_bucket"{
 #   name = var.enzo-prep
 #   location = var.region
