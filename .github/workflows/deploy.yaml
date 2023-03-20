@@ -52,6 +52,6 @@ passos :
     - ' -m '
     - ' rsync '
     - ' -d '
-    -'- r ' _
+    - '- r ' _
     - ' etl/. '
     - ' gs://${_GCS_BUCKET} '
